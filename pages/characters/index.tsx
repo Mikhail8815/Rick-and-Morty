@@ -4,6 +4,7 @@ import {Header} from "../../components/Header/Header";
 import Image from "next/image";
 import {PageWrapper} from "../../components/PageWrapper/PageWrapper";
 import {allowedDisplayValues} from "next/dist/compiled/@next/font/dist/constants";
+import {CharacterCard} from "../../components/Card/CharacterCard/CharacterCard";
 
 export const getStaticProps = async () => {
     const characters = await API.rickAndMorty.getCharacters();
@@ -22,7 +23,7 @@ const Characters = (props: PropsType) => {
     const {characters} = props;
 
     const charactersList = characters.results.map(character => (
-            <div key={character.id}>{character.name}</div>
+        <CharacterCard key={character.id} character={character} />
         )
     )
     return (

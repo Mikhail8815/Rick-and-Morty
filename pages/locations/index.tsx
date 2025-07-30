@@ -3,6 +3,7 @@ import {Header} from "../../components/Header/Header";
 import {PageWrapper} from "../../components/PageWrapper/PageWrapper";
 import {dehydrate, useQuery} from "@tanstack/react-query";
 import {QueryClient} from "@tanstack/query-core";
+import {Card} from "../../components/Card/Card";
 
 const getLocations = () => {
     return fetch('https://rickandmortyapi.com/api/location', {
@@ -31,7 +32,7 @@ const Locations = () => {
 
 
     const locationsList = locations.results.map(location => (
-            <div key={location.id}>{location.name}</div>
+        <Card key={location.id} name={location.name}/>
         )
     )
     return (
