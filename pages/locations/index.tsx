@@ -4,6 +4,8 @@ import {PageWrapper} from "../../components/PageWrapper/PageWrapper";
 import {dehydrate, useQuery} from "@tanstack/react-query";
 import {QueryClient} from "@tanstack/query-core";
 import {Card} from "../../components/Card/Card";
+import {getLayout} from "../../components/Layout/BaseLayout/BaseLayout";
+import Home from "../index";
 
 const getLocations = () => {
     return fetch('https://rickandmortyapi.com/api/location', {
@@ -37,10 +39,10 @@ const Locations = () => {
     )
     return (
         <PageWrapper>
-            <Header/>
             {locationsList}
         </PageWrapper>
     )
 }
 
+Locations.getLayout = getLayout
 export default Locations

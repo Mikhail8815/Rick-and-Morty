@@ -5,6 +5,8 @@ import Image from "next/image";
 import {PageWrapper} from "../../components/PageWrapper/PageWrapper";
 import {allowedDisplayValues} from "next/dist/compiled/@next/font/dist/constants";
 import {CharacterCard} from "../../components/Card/CharacterCard/CharacterCard";
+import {getLayout} from "../../components/Layout/BaseLayout/BaseLayout";
+import Locations from "../locations";
 
 export const getStaticProps = async () => {
     const characters = await API.rickAndMorty.getCharacters();
@@ -28,10 +30,10 @@ const Characters = (props: PropsType) => {
     )
     return (
         <PageWrapper>
-            <Header/>
             {charactersList}
         </PageWrapper>
     )
 }
 
+Characters.getLayout = getLayout
 export default Characters
