@@ -6,6 +6,7 @@ import {CharacterType} from "../../assets/api/rick-and-morty-api";
 import {CharacterCard} from "../../components/Card/CharacterCard/CharacterCard";
 import {PageWrapper} from "../../components/PageWrapper/PageWrapper";
 import {getLayout} from "../../components/Layout/BaseLayout/BaseLayout";
+import {Coda} from "next/dist/compiled/@next/font/dist/google";
 
 export const getStaticPaths: GetStaticPaths = async () => {
     const {results} = await API.rickAndMorty.getCharacters()
@@ -55,7 +56,11 @@ const Character = (props: PropsType) => {
 
     return (
         <PageWrapper>
-            <CharacterCard key={character.id} character={character}/>
+            <Container>
+                <IdText>ID: {characterId}</IdText>
+                <CharacterCard key={character.id} character={character}/>
+                <Button onClick={goToCharacters}>GO TO CHARACTERS</Button>
+            </Container>
         </PageWrapper>
     )
 }
@@ -64,8 +69,25 @@ Character.getLayout = getLayout
 export default Character
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  row-gap: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 20px;
+`
+
+const Button = styled.button`
+  width: 330px;
+  height: 60px;
+  border-radius: 4px;
+  border: none;
+  background: #facaff;
+
+  &:hover {
+    background: #fa52d3;
+    color: white;
+  }
+`
+
+const IdText = styled.div`
+  font-size: 40px;
 `
