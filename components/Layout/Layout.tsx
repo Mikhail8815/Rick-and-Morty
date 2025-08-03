@@ -2,7 +2,6 @@ import {NextPage} from "next";
 import {PropsWithChildren} from "react";
 import {Header} from "../Header/Header";
 import styled from "styled-components";
-import {Coda} from "next/dist/compiled/@next/font/dist/google";
 
 export const Layout: NextPage<PropsWithChildren> = (props) => {
     const {children} = props
