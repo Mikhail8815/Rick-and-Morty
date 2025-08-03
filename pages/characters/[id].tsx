@@ -7,6 +7,18 @@ import {CharacterCard} from "../../components/Card/CharacterCard/CharacterCard";
 import {PageWrapper} from "../../components/PageWrapper/PageWrapper";
 import {getLayout} from "../../components/Layout/BaseLayout/BaseLayout";
 
+export const getStaticPaths: GetStaticPaths = async () => {
+    const {results} = await API.rickAndMorty.getCharacters()
+
+    const paths = results.map(character => ({
+        params: {id: String(character.id)}
+    }))
+
+    return {
+        paths,
+        fallback: 'blocking'
+    }
+}
 
 export const getStaticProps: GetStaticProps = async ({params}) => {
     const {id} = params || {}
@@ -43,7 +55,7 @@ const Character = (props: PropsType) => {
 
     return (
         <PageWrapper>
-
+            <CharacterCard key={character.id} character={character}/>
         </PageWrapper>
     )
 }
