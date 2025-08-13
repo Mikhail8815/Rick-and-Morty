@@ -5,7 +5,7 @@ import {dehydrate, useQuery} from "@tanstack/react-query";
 import {QueryClient} from "@tanstack/query-core";
 import {Card} from "../../components/Card/Card";
 import {getLayout} from "../../components/Layout/BaseLayout/BaseLayout";
-import Home from "../index";
+import Home from "../../app/page";
 
 const getLocations = () => {
     return fetch('https://rickandmortyapi.com/api/location', {
